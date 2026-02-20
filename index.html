@@ -97,7 +97,9 @@ textarea {
 body > input, body > textarea, body > button {
   display: block;
 }
-
+button:last-of-type {
+  background: #FF3D3D;
+}
 </style>
 </head>
 <body>
@@ -113,6 +115,7 @@ body > input, body > textarea, body > button {
 
 <textarea id="mensagem" readonly placeholder="Sua mensagem aparecerá aqui"></textarea>
 <button onclick="copiarMensagem()">Copiar Mensagem</button>
+ <button onclick="limparCampos()">Limpar Tudo</button>
 
 <script>
 function gerarMensagem() {
@@ -152,7 +155,15 @@ function copiarMensagem() {
     .then(() => alert("Mensagem copiada! ✅"))
     .catch(() => alert("Não foi possível copiar!"));
 }
+ function limparCampos() {
+  document.getElementById('produto').value = '';
+  document.getElementById('precoAntigo').value = '';
+  document.getElementById('precoNovo').value = '';
+  document.getElementById('link').value = '';
+  document.getElementById('mensagem').value = '';
+}
 </script>
 
 </body>
 </html>
+
