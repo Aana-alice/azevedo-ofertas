@@ -101,20 +101,39 @@ button:last-of-type {
   background: #FF3D3D;
 }
  #aviso {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
   background: #FF6A00;
   color: #FFFFFF;
-  padding: 12px;
-  border-radius: 10px;
+  
+  padding: 18px 25px;
+  border-radius: 14px;
   text-align: center;
+  
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  margin-top: 15px;
-  animation: fadeIn 0.3s ease;
+  font-size: 16px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  
+  display: none;
+  z-index: 9999;
+
+  animation: fadeIn 0.25s ease;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { 
+    opacity: 0; 
+    transform: translate(-50%, -60%);
+  }
+  to { 
+    opacity: 1; 
+    transform: translate(-50%, -50%);
+  }
 }
 </style>
 </head>
@@ -198,5 +217,6 @@ function copiarMensagem() {
 
 </body>
 </html>
+
 
 
