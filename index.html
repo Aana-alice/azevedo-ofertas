@@ -100,6 +100,22 @@ body > input, body > textarea, body > button {
 button:last-of-type {
   background: #FF3D3D;
 }
+ #aviso {
+  background: #FF6A00;
+  color: #FFFFFF;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  margin-top: 15px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
@@ -116,6 +132,7 @@ button:last-of-type {
 <textarea id="mensagem" readonly placeholder="Sua mensagem aparecerá aqui"></textarea>
 <button onclick="copiarMensagem()">Copiar Mensagem</button>
  <button onclick="limparCampos()">Limpar Tudo</button>
+ <div id="aviso" style="display:none;"></div>
 
 <script>
 function gerarMensagem() {
@@ -145,16 +162,31 @@ ${produto}
 
 function copiarMensagem() {
   const mensagemArea = document.getElementById('mensagem');
-  if(!mensagemArea.value){
-    alert("Não há mensagem para copiar!");
+
+  if (!mensagemArea.value) {
+    mostrarAviso("Não há mensagem para copiar!");
     return;
   }
-  mensagemArea.select();
-  mensagemArea.setSelectionRange(0, 99999); // compatível com mobile
+
   navigator.clipboard.writeText(mensagemArea.value)
-    .then(() => alert("Mensagem copiada! ✅"))
-    .catch(() => alert("Não foi possível copiar!"));
+    .then(() => {
+      mostrarAviso("Mensagem copiada com sucesso! 🚀");
+    })
+    .catch(() => {
+      mostrarAviso("Não foi possível copiar!");
+    });
 }
+ function mostrarAviso(texto) {
+  const aviso = document.getElementById("aviso");
+
+  aviso.innerText = texto;
+  aviso.style.display = "block";
+
+  setTimeout(() => {
+    aviso.style.display = "none";
+  }, 2000); // 2 segundos
+}
+ 
  function limparCampos() {
   document.getElementById('produto').value = '';
   document.getElementById('precoAntigo').value = '';
@@ -166,4 +198,5 @@ function copiarMensagem() {
 
 </body>
 </html>
+
 
